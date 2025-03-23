@@ -28,9 +28,9 @@
   <!-- SPAPP CSS File -->
   <link rel="stylesheet" href="frontend/assets/css/spapp.css">
 
-  <script src="./assets/js/jquery-3.7.1.min.js"></script>
-  <script src="./assets/js/jquery.spapp.js"></script>
-  <script src="./assets/js/jquery.spapp.min.js"></script>
+  <script src="frontend/assets/js/jquery-3.7.1.min.js"></script>
+  <script src="frontend/assets/js/jquery.spapp.js"></script>
+  <script src="frontend/assets/js/jquery.spapp.min.js"></script>
 
 </head>
 
@@ -48,10 +48,10 @@
           <li><a href="#hero">Home</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#features">Features</a></li>
-          <li class="dropdown"><a href="#"><span>Content</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+          <li class="dropdown"><a href="#hero"><span>Content</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
-              <li><a href="starter-page.html">News</a></li>
-              <li class="dropdown"><a href="learn.html"><span>Learn</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+              <li><a href="#starter-page">News</a></li>
+              <li class="dropdown"><a href="#learn"><span>Learn</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
                 <ul>
                   <li><a href="https://www.w3schools.com/python/">Python</a></li>
                   <li><a href="https://www.w3schools.com/js/">JavaScript</a></li>
@@ -60,12 +60,12 @@
                   <li><a href="https://www.w3schools.com/MySQL/default.asp">MySQL</a></li>
                 </ul>
               </li>
-              <li><a href="career.html">Career</a></li>
-              <li><a href="jobs.html">Jobs</a></li>
+              <li><a href="#career">Career</a></li>
+              <li><a href="#jobs">Jobs</a></li>
             </ul>
           </li>
           <li><a href="#contact">Contact</a></li>
-          <li><a href="login.html" class = "active">Sign In</a></li>
+          <li><a href="#login" class = "active">Sign In</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
@@ -76,7 +76,19 @@
       <section id="hero" data-load="hero.html"></section>
       <section id="about" data-load="about.html"></section>
       <section id="features" data-load="features.html"></section>
-  </main>
+      <section id="starter-page" data-load="starter-page.html"></section>
+      <section id="learn" data-load="learn.html"></section>
+      <section id="career" data-load="career.html"></section>
+      <section id="contact" data-load="contact.html"></section>
+      <section id="login" data-load="login.html"></section>
+      <section id="jobs" data-load="jobs.html"></section>
+      <section id="faq" data-load="faq.html"></section>
+      <section id="oglasi" data-load="oglasi.html"></section>
+      <section id="blog-detail" data-load="blog-detail.html"></section>
+      <section id="blog-detail2" data-load="blog-detail2.html"></section>
+      <section id="blog-detail3" data-load="blog-detail3.html"></section>
+
+  </main> 
 
   <footer id="footer" class="footer light-background">
 
@@ -100,8 +112,7 @@
   <!-- Scroll Top -->
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-  <!-- Preloader -->
-  <div id="preloader"></div>
+  
 
   <!-- Vendor JS Files -->
   <script src="frontend/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -116,8 +127,15 @@
   <script>
     var app =$.spapp({
             defaultView:"#hero",
-            templateDir:"./frontend/views/"
+            templateDir:"./views/"
     })
+
+    app.route({
+            view: "hero"
+        });
+
+
+    app.run();
   </script>
 
 </body>

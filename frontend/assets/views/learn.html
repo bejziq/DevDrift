@@ -4,12 +4,13 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>DevDrift</title>
+  <title>Starter Page - eStartup Bootstrap Template</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
 
   <!-- Favicons -->
   <link href="frontend/assets/img/DevDrift-logo.png" rel="icon">
+  <link href="frontend/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
@@ -25,16 +26,49 @@
   <!-- Main CSS File -->
   <link href="frontend/assets/css/main.css" rel="stylesheet">
 
-  <!-- SPAPP CSS File -->
-  <link rel="stylesheet" href="frontend/assets/css/spapp.css">
-
-  <script src="./assets/js/jquery-3.7.1.min.js"></script>
-  <script src="./assets/js/jquery.spapp.js"></script>
-  <script src="./assets/js/jquery.spapp.min.js"></script>
+  <style>
+    .tech-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        padding: 20px;
+    }
+    .tech-item {
+        background: #ffffff;
+        color: #101f0c;
+        padding: 20px;
+        border-radius: 15px;
+        width: 300px;
+        text-align: center;
+        box-shadow: 0px 4px 10px rgba(113, 197, 93, 0.5);
+        transition: transform 0.3s, background-color 0.3s;
+    }
+    .tech-item:hover {
+        transform: translateY(-5px);
+    }
+    .tech-item h3 {
+        margin-bottom: 10px;
+    }
+    .tech-item a {
+        display: inline-block;
+        margin-top: 10px;
+        color: #101f0c;
+        font-weight: bold;
+        text-decoration: none;
+        padding: 8px 12px;
+        border-radius: 5px;
+        background: #71c55d;
+        transition: background 0.3s;
+    }
+    .tech-item a:hover {
+        background: #5a9c48;
+    }
+</style>
 
 </head>
 
-<body class="index-page">
+<body class="starter-page-page">
 
   <header id="header" class="header d-flex align-items-center sticky-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
@@ -43,7 +77,7 @@
         <h1 class="sitename"><span>D</span>evDrift</h1>
       </a>
 
-      <nav id="navmenu" class="navmenu" role="navigation">
+      <nav id="navmenu" class="navmenu">
         <ul>
           <li><a href="#hero">Home</a></li>
           <li><a href="#about">About</a></li>
@@ -51,7 +85,7 @@
           <li class="dropdown"><a href="#"><span>Content</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
               <li><a href="starter-page.html">News</a></li>
-              <li class="dropdown"><a href="learn.html"><span>Learn</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+              <li class="dropdown"><a href="#"><span>Learn</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
                 <ul>
                   <li><a href="https://www.w3schools.com/python/">Python</a></li>
                   <li><a href="https://www.w3schools.com/js/">JavaScript</a></li>
@@ -69,13 +103,43 @@
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
+
     </div>
   </header>
 
-  <main id="spapp" role="main">
-      <section id="hero" data-load="hero.html"></section>
-      <section id="about" data-load="about.html"></section>
-      <section id="features" data-load="features.html"></section>
+  <main class="main">
+
+    <div class="container py-5">
+        <h1 class="text-center mb-4 fw-bold">Learn Technologies</h1>
+        <div class="tech-container">
+            <div class="tech-item">
+                <h3>Java</h3>
+                <p>Java is a versatile, object-oriented programming language used in web, mobile, and enterprise applications.</p>
+                <a href="https://www.w3schools.com/java/" target="_blank">Learn Java</a>
+            </div>
+            <div class="tech-item">
+                <h3>JavaScript</h3>
+                <p>JavaScript is a widely-used scripting language for creating dynamic and interactive web pages.</p>
+                <a href="https://www.w3schools.com/js/" target="_blank">Learn JavaScript</a>
+            </div>
+            <div class="tech-item">
+                <h3>Python</h3>
+                <p>Python is a high-level, interpreted language known for its simplicity and readability.</p>
+                <a href="https://www.w3schools.com/python/" target="_blank">Learn Python</a>
+            </div>
+            <div class="tech-item">
+                <h3>C++</h3>
+                <p>C++ is a powerful programming language used for system software, game development, and high-performance applications.</p>
+                <a href="https://www.w3schools.com/cpp/" target="_blank">Learn C++</a>
+            </div>
+            <div class="tech-item">
+                <h3>MySQL</h3>
+                <p>MySQL is a popular open-source relational database management system used in web applications.</p>
+                <a href="https://www.w3schools.com/mysql/" target="_blank">Learn MySQL</a>
+            </div>
+        </div>
+    </div>
+
   </main>
 
   <footer id="footer" class="footer light-background">
@@ -91,7 +155,7 @@
         <a href=""><i class="bi bi-linkedin"></i></a>
       </div>
       <div class="credits">
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+        Designed by <a href="https://bootstrapmade.com/">DevDrift</a>
       </div>
     </div>
 
@@ -112,14 +176,6 @@
   <!-- Main JS File -->
   <script src="frontend/assets/js/main.js"></script>
 
-  
-  <script>
-    var app =$.spapp({
-            defaultView:"#hero",
-            templateDir:"./frontend/views/"
-    })
-  </script>
-
 </body>
 
-</html> 
+</html>

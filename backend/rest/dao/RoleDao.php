@@ -1,6 +1,6 @@
 <?php
 require_once 'BaseDao.php';
-
+class RoleDao extends BaseDao {
 public function __construct(){
     parent::__construct("roles"); 
 }
@@ -29,5 +29,5 @@ public function add($roles){
 public function partial_update($id, $roles){
     return $this->update($id, $roles);
 }
-
+}
 ?>

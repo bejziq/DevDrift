@@ -1,7 +1,7 @@
 <?php
 require_once 'BaseDao.php';
 
-class ReviewDao extends BaseDao {
+class CompanyDao extends BaseDao {
     public function __construct() {
         parent::__construct("companies");
     }

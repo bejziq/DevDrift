@@ -10,7 +10,7 @@ $companyDao = new CompanyDao();
 
 // Insert a new user
 $jobDao->insert([
-    'job_id' => 1,
+    'job_id' => 11,
     'job_name' => 'John Doe',
     'job_description' => 'ovaj posao je najjaci posao...',
     'company_id' => 1
@@ -18,7 +18,7 @@ $jobDao->insert([
  
 // Insert a new company
 $companyDao->insert([
-    'company_id' => 1,
+    'company_id' => 11,
     'company_name' => 'Klika',
     'company_description' => 'ova kompanija posluje od 2020...',
     'address' => 'Butmirska cesta 18d',

@@ -2,7 +2,7 @@
 
 class Database {
     private static $host = 'localhost';
-    private static $dbName = 'devdrift';
+    private static $dbName = 'devdrift2';
     private static $username = 'root';
     private static $port = "3307";
     private static $password = '';

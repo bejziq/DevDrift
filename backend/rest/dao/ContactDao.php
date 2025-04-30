@@ -1,24 +1,24 @@
 <?php
-require_once 'BaseDao.php';
 
-class ContactDao extends BaseDao {
-    protected $connection;
-    private $table_name = "contacts";
+require_once __DIR__ . '/BaseDao.php';
+
+class ContactDao extends BaseDao{
+
+    protected $table_name;
+
     public function __construct()
     {
-        try {
-            $this->connection = new PDO(
-                "mysql:host=" . Config::DB_HOST() . ";dbname=" . Config::DB_NAME() . ";port=" . Config::DB_PORT(),
-                Config::DB_USER(),
-                Config::DB_PASSWORD(),
-                [
-                    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-                    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
-                ]
-            );
-        } catch (PDOException $e) {
-            throw $e;
-        }
+        $this->table_name = "contacts";
+        parent::__construct($this->table_name);
     }
-}
+
+    public function get_all() {
+        return $this->query('SELECT * FROM ' . $this->table_name, []);
+    }
+
+    public function get_by_id($id) {
+        return $this->query_unique('SELECT * FROM ' . $this->table_name . ' WHERE contact_id = :id', ['id' => $id]);
+    }
+
+    }
 ?>

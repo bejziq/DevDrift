@@ -1,14 +1,12 @@
 <?php
 
 require_once 'BaseService.php';
-require_once 'BlogDao.php';
+require_once __DIR__ . "/../dao/BlogDao.php";
 
 
 class BlogService extends BaseService{
     public function __construct() {
-        $dao = new BlogDao();
-
-        parent::__construct($dao);
+        parent::__construct(new BlogDao);
     }
 
     public function getByBlogId($blog_id) {

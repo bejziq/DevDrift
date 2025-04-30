@@ -1,3 +1,5 @@
 {
-    "require": {}
+    "require": {
+        "flightphp/core": "^3.15"
+    }
 }

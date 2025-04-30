@@ -1,33 +1,25 @@
 <?php
-require_once 'BaseDao.php';
 
-class CategoryDao extends BaseDao {
+require_once __DIR__ . '/BaseDao.php';
 
-    protected $connection;
-    private $table_name = "categories";
+class CategoryDao extends BaseDao{
+
+    protected $table_name;
+
     public function __construct()
     {
-        try {
-            $this->connection = new PDO(
-                "mysql:host=" . Config::DB_HOST() . ";dbname=" . Config::DB_NAME() . ";port=" . Config::DB_PORT(),
-                Config::DB_USER(),
-                Config::DB_PASSWORD(),
-                [
-                    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-                    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
-                ]
-            );
-        } catch (PDOException $e) {
-            throw $e;
-        }
+        $this->table_name = "categories";
+        parent::__construct($this->table_name);
     }
 
-    public function getByCategoryName($category_name) {
-        $stmt = $this->connection->prepare("SELECT * FROM categories WHERE category_name = :category_name");
-        $stmt->bindParam(':category_name', $category_name);
-        $stmt->execute();
-        return $stmt->fetchAll();
+    public function get_all() {
+        return $this->query('SELECT * FROM ' . $this->table_name, []);
     }
-}
 
+    public function get_by_id($id) {
+        return $this->query_unique('SELECT * FROM ' . $this->table_name . ' WHERE category_id = :id', ['id' => $id]);
+    }
+
+
+    }
 ?>

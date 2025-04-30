@@ -1,10 +1,10 @@
 <?php
+require_once 'BaseService.php';
+require_once __DIR__ . "/../dao/JobDao.php";
 
 class JobService extends BaseService{
     public function __construct() {
-        $dao = new JobDao();
-
-        parent::__construct($dao);
+        parent::__construct(new JobDao);
     }
 
     public function getByJobId($job_id) {

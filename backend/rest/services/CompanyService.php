@@ -1,15 +1,14 @@
 <?php
 
 require_once 'BaseService.php';
-require_once 'CompanyDao.php';
+require_once __DIR__ . "/../dao/CompanyDao.php";
 
 
 class CompanyService extends BaseService {
 
-    private $dao;
-
-    public function __construct() {
-        $this->dao = new CompanyDao();
+    public function __construct()
+    {
+        parent::__construct(new CompanyDao);
     }
 
     public function getAllCompanies() {

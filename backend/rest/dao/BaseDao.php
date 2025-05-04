@@ -72,7 +72,7 @@ class BaseDao
     public function delete($id)
     {
         $stmt = $this->connection->prepare("DELETE FROM " . $this->table_name . " WHERE id = :id");
-        $stmt->bindValue(':id', $id); 
-        return $stmt->execute();
+        $stmt->bindValue(':id', $id);
+        $stmt->execute();
     }
 }

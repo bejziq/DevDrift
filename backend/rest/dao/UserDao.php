@@ -1,17 +1,24 @@
 <?php
-require_once 'BaseDao.php';
 
-class UsersDao extends BaseDao {
-    public function __construct() {
-        parent::__construct("users");
+require_once __DIR__ . '/BaseDao.php';
+
+class UserDao extends BaseDao{
+
+    protected $table_name;
+
+    public function __construct()
+    {
+        $this->table_name = "users";
+        parent::__construct($this->table_name);
     }
 
-    public function getByUserId($user_id) {
-        $stmt = $this->connection->prepare("SELECT * FROM users WHERE user_id = :user_id");
-        $stmt->bindParam(':user_id', $user_id);
-        $stmt->execute();
-        return $stmt->fetchAll();
+    public function get_all() {
+        return $this->query('SELECT * FROM ' . $this->table_name, []);
     }
-}
 
+    public function get_by_id($id) {
+        return $this->query_unique('SELECT * FROM ' . $this->table_name . ' WHERE user_id = :id', ['id' => $id]);
+    }
+
+    }
 ?>

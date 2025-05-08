@@ -1,175 +1,339 @@
 <style>
-   /* Header */
-.job-header {
-    border-bottom: 2px solid rgba(113, 197, 93, 0.2);
-    padding-bottom: 1.5rem;
-    margin-bottom: 2rem;
-}
-
-/* Section Titles */
-.section-title {
-    position: relative;
-    padding-bottom: 0.75rem;
-    margin: 2.5rem 0 1.75rem;
-}
-/* List Items */
-.list-item {
-    margin-bottom: 0.8rem;
-    padding-left: 1.5rem;
-    position: relative;
-}
-.list-item:before {
-    content: "•";
-    position: absolute;
-    left: 0;
-    color: #71c55d;
-    font-weight: bold;
-    font-size: 1.2rem;
-}
-
-/* Cards */
-.card {
-    border: none;
-    border-radius: 0.75rem;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    height: 100%;
-    background-color: #ffffff;
-}
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-}
-
-/* Contact Card */
-.contact-card {
-    background-color: rgba(113, 197, 93, 0.05);
-    border-radius: 0.75rem;
-    border-left: 4px solid #71c55d;
-}
-
-/* Buttons */
-.btn-accent {
-    background-color: #71c55d;
-    color: #101f0c;
-    border: none;
-    font-weight: 500;
-}
-.btn-accent:hover {
-    background-color: #5fb34b;
-    color: #101f0c;
-}
-.btn-outline-accent {
-    border: 2px solid #71c55d;
-    color: #71c55d;
-    font-weight: 500;
-}
-.btn-outline-accent:hover {
-    background-color: #71c55d;
-    color: #101f0c;
-}
-
-/* Icons */
-.card-icon {
-    width: 48px;
-    height: 48px;
-    background-color: rgba(113, 197, 93, 0.1);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 1rem;
-}
-.card-icon i {
-    color: #71c55d;
-    font-size: 1.5rem;
-}
-
-
-</style>
-<section id = "01">
-
-
-    <div class="container py-4 py-lg-5">
-        <a href="#klika"><img src="frontend\assets\img\klika2.png" alt="" class="img-fluid services-img mx-auto d-block"></a>
-        <div class="job-header">
-            <h1 class="display-5 fw-bold mb-3">Full-Stack Developer (Node/React)</h1>
-            <p class="lead">Klika is partnering with a company revolutionizing the care experience for care seekers and their families. Their platform integrates comprehensive long-term care options, non-healthcare resources, educational content, and personalized human support into one place.</p>
-            <p>We are looking for Medior Fullstack Engineers to join a dedicated team of 20 Klika employees already working on this project.</p>
-        </div>
-
-        <div class="row">
-            <div class="col-lg-6">
-                <h2 class="section-title">Responsibilities</h2>
-                <div class="list-group list-group-flush">
-                    <div class="list-item">Produces, maintains and modifies visually appealing frontend website architecture, including translating designer mock-ups and wireframes into frontend code.</div>
-                    <div class="list-item">Develops functional databases, applications and servers to support websites on the backend.</div>
-                    <div class="list-item">Develops experience for both mobile and desktop.</div>
-                    <div class="list-item">Maintains quality and ensures responsiveness of all applications.</div>
-                    <div class="list-item">Tests software to ensure proper functionality, responsiveness and efficiency using different techniques.</div>
-                </div>
-            </div>
-
-            <div class="col-lg-6 mt-4 mt-lg-0">
-                <h2 class="section-title">Requirements</h2>
-                <div class="list-group list-group-flush">
-                    <div class="list-item">2 to 5 years of experience</div>
-                    <div class="list-item">Frontend: React and Typescript</div>
-                    <div class="list-item">Backend: Node and Typescript</div>
-                    <div class="list-item">Additional experience: Familiarity with Azure Deployment and GraphQL using Apollo experience</div>
-                    <div class="list-item">Native-like proficiency in the English language</div>
-                </div>
-            </div>
-        </div>
-
-        <h2 class="section-title mt-5">Benefits</h2>
-        <div class="row row-cols-1 row-cols-md-2 g-4">
-            <div class="col">
-                <div class="card h-100 border-0 shadow-sm">
-                    <div class="card-body">
-                        <h5 class="card-title">Work-life balance</h5>
-                        <p class="card-text">Part of Klika culture. In addition to 20 days of paid annual leave, we all go on a collective annual leave of 5 days.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100 border-0 shadow-sm">
-                    <div class="card-body">
-                        <h5 class="card-title">Klika Service Awards</h5>
-                        <p class="card-text">Recognizes growing knowledge and experience with new responsibilities, benefits, and Klika merch package.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100 border-0 shadow-sm">
-                    <div class="card-body">
-                        <h5 class="card-title">Learning opportunities</h5>
-                        <p class="card-text">Daily learning through Open Port Sessions, Klika Heroes mentorship, and professional workshops.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100 border-0 shadow-sm">
-                    <div class="card-body">
-                        <h5 class="card-title">Community involvement</h5>
-                        <p class="card-text">We support and reward initiatives to help associations or contribute to the community (#giveback).</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="contact-card p-4 p-md-5 mt-5">
-            <h2 class="mb-4">Any questions?</h2>
-            <p>To find out more about the <span><a href="https://www.klika.us/expertise/">technologies</a></span> we are using on daily basis, <span><a href="https://www.klika.us/case-studies/">projects</a></span> we are working on, please check the links.</p>
-            <p>If this is not the right opportunity for you at the moment, but you would like us to contact you for our future projects, feel free to apply to <span><a href="https://recruitcrm.io/apply/16843205027740035292RzA">"My Perfect Project"</a></span> and let us know what that project/role would be?</p>
-            
-            <div class="mt-4">
-                <p class="mb-1">If you think you can help us grow, submit your resume!</p>
-                <p class="mb-1">Contact me directly:</p>
-                <div class="d-flex flex-column flex-md-row gap-2 mt-3">
-                    <a href="https://www.linkedin.com/in/milica-putica/" class="btn btn-outline-primary">LinkedIn</a>
-                    <a href="mailto:milica.putica@klika.ba" class="btn btn-primary">Email Milica</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+    /* Header */
+ .job-header {
+     border-bottom: 2px solid rgba(113, 197, 93, 0.2);
+     padding-bottom: 1.5rem;
+     margin-bottom: 2rem;
+ }
+ 
+ /* Section Titles */
+ .section-title {
+     position: relative;
+     padding-bottom: 0.75rem;
+     margin: 2.5rem 0 1.75rem;
+ }
+ /* List Items */
+ .list-item {
+     margin-bottom: 0.8rem;
+     padding-left: 1.5rem;
+     position: relative;
+ }
+ .list-item:before {
+     content: "•";
+     position: absolute;
+     left: 0;
+     color: #71c55d;
+     font-weight: bold;
+     font-size: 1.2rem;
+ }
+ 
+ /* Cards */
+ .card {
+     border: none;
+     border-radius: 0.75rem;
+     transition: transform 0.3s ease, box-shadow 0.3s ease;
+     height: 100%;
+     background-color: #ffffff;
+ }
+ .card:hover {
+     transform: translateY(-5px);
+     box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+ }
+ 
+ /* Contact Card */
+ .contact-card {
+     background-color: rgba(113, 197, 93, 0.05);
+     border-radius: 0.75rem;
+     border-left: 4px solid #71c55d;
+ }
+ 
+ /* Buttons */
+ .btn-accent {
+     background-color: #71c55d;
+     color: #101f0c;
+     border: none;
+     font-weight: 500;
+ }
+ .btn-accent:hover {
+     background-color: #5fb34b;
+     color: #101f0c;
+ }
+ .btn-outline-accent {
+     border: 2px solid #71c55d;
+     color: #71c55d;
+     font-weight: 500;
+ }
+ .btn-outline-accent:hover {
+     background-color: #71c55d;
+     color: #101f0c;
+ }
+ 
+ /* Icons */
+ .card-icon {
+     width: 48px;
+     height: 48px;
+     background-color: rgba(113, 197, 93, 0.1);
+     border-radius: 50%;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     margin-bottom: 1rem;
+ }
+ .card-icon i {
+     color: #71c55d;
+     font-size: 1.5rem;
+ }
+ 
+ /* Application Form */
+ .application-form {
+     background-color: rgba(113, 197, 93, 0.05);
+     border-radius: 0.75rem;
+     padding: 2rem;
+     margin-top: 3rem;
+     border-left: 4px solid #71c55d;
+ }
+ .application-form .form-control {
+     border-radius: 0.5rem;
+     padding: 0.75rem 1rem;
+     border: 1px solid #dee2e6;
+ }
+ .application-form .form-control:focus {
+     border-color: #71c55d;
+     box-shadow: 0 0 0 0.25rem rgba(113, 197, 93, 0.25);
+ }
+ .application-form label {
+     font-weight: 500;
+     margin-bottom: 0.5rem;
+ }
+ .file-upload {
+     position: relative;
+     overflow: hidden;
+     display: inline-block;
+ }
+ .file-upload-btn {
+     border: 2px dashed #71c55d;
+     border-radius: 0.5rem;
+     padding: 1.5rem;
+     text-align: center;
+     width: 100%;
+     background-color: rgba(113, 197, 93, 0.05);
+     cursor: pointer;
+     transition: all 0.3s ease;
+ }
+ .file-upload-btn:hover {
+     background-color: rgba(113, 197, 93, 0.1);
+ }
+ .file-upload-input {
+     position: absolute;
+     left: 0;
+     top: 0;
+     opacity: 0;
+     width: 100%;
+     height: 100%;
+     cursor: pointer;
+ }
+ </style>
+ <section id = "01">
+     <div class="container py-4 py-lg-5">
+         <a href="#klika"><img src="frontend\assets\img\klika2.png" alt="" class="img-fluid services-img mx-auto d-block"></a>
+         <div class="job-header">
+             <h1 class="display-5 fw-bold mb-3">Full-Stack Developer (Node/React)</h1>
+             <p class="lead">Klika is partnering with a company revolutionizing the care experience for care seekers and their families. Their platform integrates comprehensive long-term care options, non-healthcare resources, educational content, and personalized human support into one place.</p>
+             <p>We are looking for Medior Fullstack Engineers to join a dedicated team of 20 Klika employees already working on this project.</p>
+             
+             <!-- Apply Button (Top) -->
+             <div class="d-grid gap-2 d-md-flex justify-content-md-start mt-4">
+                 <button class="btn btn-accent btn-lg px-4 me-md-2" data-bs-toggle="modal" data-bs-target="#applyModal">Apply Now</button>
+                 <button class="btn btn-outline-accent btn-lg px-4" onclick="window.location.href='#application-form'">More Info</button>
+             </div>
+         </div>
+ 
+         <div class="row">
+             <div class="col-lg-6">
+                 <h2 class="section-title">Responsibilities</h2>
+                 <div class="list-group list-group-flush">
+                     <div class="list-item">Produces, maintains and modifies visually appealing frontend website architecture, including translating designer mock-ups and wireframes into frontend code.</div>
+                     <div class="list-item">Develops functional databases, applications and servers to support websites on the backend.</div>
+                     <div class="list-item">Develops experience for both mobile and desktop.</div>
+                     <div class="list-item">Maintains quality and ensures responsiveness of all applications.</div>
+                     <div class="list-item">Tests software to ensure proper functionality, responsiveness and efficiency using different techniques.</div>
+                 </div>
+             </div>
+ 
+             <div class="col-lg-6 mt-4 mt-lg-0">
+                 <h2 class="section-title">Requirements</h2>
+                 <div class="list-group list-group-flush">
+                     <div class="list-item">2 to 5 years of experience</div>
+                     <div class="list-item">Frontend: React and Typescript</div>
+                     <div class="list-item">Backend: Node and Typescript</div>
+                     <div class="list-item">Additional experience: Familiarity with Azure Deployment and GraphQL using Apollo experience</div>
+                     <div class="list-item">Native-like proficiency in the English language</div>
+                 </div>
+             </div>
+         </div>
+ 
+         <h2 class="section-title mt-5">Benefits</h2>
+         <div class="row row-cols-1 row-cols-md-2 g-4">
+             <div class="col">
+                 <div class="card h-100 border-0 shadow-sm">
+                     <div class="card-body">
+                         <h5 class="card-title">Work-life balance</h5>
+                         <p class="card-text">Part of Klika culture. In addition to 20 days of paid annual leave, we all go on a collective annual leave of 5 days.</p>
+                     </div>
+                 </div>
+             </div>
+             <div class="col">
+                 <div class="card h-100 border-0 shadow-sm">
+                     <div class="card-body">
+                         <h5 class="card-title">Klika Service Awards</h5>
+                         <p class="card-text">Recognizes growing knowledge and experience with new responsibilities, benefits, and Klika merch package.</p>
+                     </div>
+                 </div>
+             </div>
+             <div class="col">
+                 <div class="card h-100 border-0 shadow-sm">
+                     <div class="card-body">
+                         <h5 class="card-title">Learning opportunities</h5>
+                         <p class="card-text">Daily learning through Open Port Sessions, Klika Heroes mentorship, and professional workshops.</p>
+                     </div>
+                 </div>
+             </div>
+             <div class="col">
+                 <div class="card h-100 border-0 shadow-sm">
+                     <div class="card-body">
+                         <h5 class="card-title">Community involvement</h5>
+                         <p class="card-text">We support and reward initiatives to help associations or contribute to the community (#giveback).</p>
+                     </div>
+                 </div>
+             </div>
+         </div>
+ 
+         <!-- Application Form Section -->
+         <div id="application-form" class="application-form">
+             <h2 class="section-title">Apply for this position</h2>
+             <form>
+                 <div class="row g-3">
+                     <div class="col-md-6">
+                         <label for="firstName" class="form-label">First Name</label>
+                         <input type="text" class="form-control" id="firstName" required>
+                     </div>
+                     <div class="col-md-6">
+                         <label for="lastName" class="form-label">Last Name</label>
+                         <input type="text" class="form-control" id="lastName" required>
+                     </div>
+                     <div class="col-md-6">
+                         <label for="email" class="form-label">Email</label>
+                         <input type="email" class="form-control" id="email" required>
+                     </div>
+                     <div class="col-md-6">
+                         <label for="phone" class="form-label">Phone</label>
+                         <input type="tel" class="form-control" id="phone">
+                     </div>
+                     <div class="col-12">
+                         <label for="linkedin" class="form-label">LinkedIn Profile (optional)</label>
+                         <input type="url" class="form-control" id="linkedin">
+                     </div>
+                     <div class="col-12">
+                         <label for="coverLetter" class="form-label">Cover Letter</label>
+                         <textarea class="form-control" id="coverLetter" rows="4" placeholder="Tell us why you'd be a great fit for this position..."></textarea>
+                     </div>
+                     <div class="col-12">
+                         <label class="form-label">Upload Resume/CV</label>
+                         <div class="file-upload">
+                             <label class="file-upload-btn">
+                                 <input type="file" class="file-upload-input" accept=".pdf,.doc,.docx" required>
+                                 <i class="fas fa-cloud-upload-alt fa-2x mb-2" style="color: #71c55d;"></i>
+                                 <p class="mb-1">Drag & drop your file here or click to browse</p>
+                                 <p class="text-muted small">Supported formats: PDF, DOC, DOCX (Max 5MB)</p>
+                             </label>
+                         </div>
+                     </div>
+                     <div class="col-12 mt-4">
+                         <div class="form-check">
+                             <input class="form-check-input" type="checkbox" id="consent" required>
+                             <label class="form-check-label" for="consent">
+                                 I consent to having Klika collect and process my personal data for recruitment purposes.
+                             </label>
+                         </div>
+                     </div>
+                     <div class="col-12 mt-3">
+                         <button type="submit" class="btn btn-accent btn-lg px-4">Submit Application</button>
+                     </div>
+                 </div>
+             </form>
+         </div>
+ 
+         <div class="contact-card p-4 p-md-5 mt-5">
+             <h2 class="mb-4">Any questions?</h2>
+             <p>To find out more about the <span><a href="https://www.klika.us/expertise/">technologies</a></span> we are using on daily basis, <span><a href="https://www.klika.us/case-studies/">projects</a></span> we are working on, please check the links.</p>
+             <p>If this is not the right opportunity for you at the moment, but you would like us to contact you for our future projects, feel free to apply to <span><a href="https://recruitcrm.io/apply/16843205027740035292RzA">"My Perfect Project"</a></span> and let us know what that project/role would be?</p>
+             
+             <div class="mt-4">
+                 <p class="mb-1">If you think you can help us grow, submit your resume!</p>
+                 <p class="mb-1">Contact me directly:</p>
+                 <div class="d-flex flex-column flex-md-row gap-2 mt-3">
+                     <a href="https://www.linkedin.com/in/milica-putica/" class="btn btn-outline-primary">LinkedIn</a>
+                     <a href="mailto:milica.putica@klika.ba" class="btn btn-primary">Email Milica</a>
+                 </div>
+             </div>
+         </div>
+     </div>
+ 
+     <!-- Apply Now Modal -->
+     <div class="modal fade" id="applyModal" tabindex="-1" aria-labelledby="applyModalLabel" aria-hidden="true">
+         <div class="modal-dialog modal-lg">
+             <div class="modal-content">
+                 <div class="modal-header">
+                     <h5 class="modal-title" id="applyModalLabel">Apply for Full-Stack Developer (Node/React)</h5>
+                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                 </div>
+                 <div class="modal-body">
+                     <form>
+                         <div class="row g-3">
+                             <div class="col-md-6">
+                                 <label for="modalFirstName" class="form-label">First Name</label>
+                                 <input type="text" class="form-control" id="modalFirstName" required>
+                             </div>
+                             <div class="col-md-6">
+                                 <label for="modalLastName" class="form-label">Last Name</label>
+                                 <input type="text" class="form-control" id="modalLastName" required>
+                             </div>
+                             <div class="col-md-6">
+                                 <label for="modalEmail" class="form-label">Email</label>
+                                 <input type="email" class="form-control" id="modalEmail" required>
+                             </div>
+                             <div class="col-md-6">
+                                 <label for="modalPhone" class="form-label">Phone</label>
+                                 <input type="tel" class="form-control" id="modalPhone">
+                             </div>
+                             <div class="col-12">
+                                 
+                                 <div class="file-upload">
+                                     <label class="file-upload-btn">
+                                         <input type="file" class="file-upload-input" accept=".pdf,.doc,.docx" required>
+                                         <i class="fas fa-cloud-upload-alt fa-2x mb-2" style="color: #71c55d;"></i>
+                                         <p class="mb-1">Drag & drop your file here or click to browse</p>
+                                         <p class="text-muted small">Supported formats: PDF, DOC, DOCX (Max 5MB)</p>
+                                     </label>
+                                 </div>
+                             </div>
+                             <div class="col-12 mt-3">
+                                 <div class="form-check">
+                                     <input class="form-check-input" type="checkbox" id="modalConsent" required>
+                                     <label class="form-check-label" for="modalConsent">
+                                         I consent to having Klika collect and process my personal data for recruitment purposes.
+                                     </label>
+                                 </div>
+                             </div>
+                         </div>
+                     </form>
+                 </div>
+                 <div class="modal-footer">
+                     <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+                     <button type="button" class="btn btn-accent">Submit Application</button>
+                 </div>
+             </div>
+         </div>
+     </div>
+ </section>
+ 

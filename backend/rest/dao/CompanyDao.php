@@ -1,17 +1,24 @@
 <?php
-require_once 'BaseDao.php';
 
-class ReviewDao extends BaseDao {
-    public function __construct() {
-        parent::__construct("companies");
+require_once __DIR__ . '/BaseDao.php';
+
+class CompanyDao extends BaseDao{
+
+    protected $table_name;
+
+    public function __construct()
+    {
+        $this->table_name = "companies";
+        parent::__construct($this->table_name);
     }
 
-    public function getByCompanyId($company_id) {
-        $stmt = $this->connection->prepare("SELECT * FROM companies WHERE company_id = :company_id");
-        $stmt->bindParam(':company_id', $company_id);
-        $stmt->execute();
-        return $stmt->fetchAll();
+    public function get_all() {
+        return $this->query('SELECT * FROM ' . $this->table_name, []);
     }
-}
 
+    public function get_by_id($id) {
+        return $this->query_unique('SELECT * FROM ' . $this->table_name . ' WHERE company_id = :id', ['id' => $id]);
+    }
+
+    }
 ?>

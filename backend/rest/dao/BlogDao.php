@@ -1,17 +1,24 @@
 <?php
-require_once 'BaseDao.php';
 
-class ReviewDao extends BaseDao {
-    public function __construct() {
-        parent::__construct("blogs");
+require_once __DIR__ . '/BaseDao.php';
+
+class BlogDao extends BaseDao{
+
+    protected $table_name;
+
+    public function __construct()
+    {
+        $this->table_name = "blogs";
+        parent::__construct($this->table_name);
     }
 
-    public function getByBlogId($blog_id) {
-        $stmt = $this->connection->prepare("SELECT * FROM blogs WHERE blog_id = :blog_id");
-        $stmt->bindParam(':blog_id', $blog_id);
-        $stmt->execute();
-        return $stmt->fetchAll();
+    public function get_all() {
+        return $this->query('SELECT * FROM ' . $this->table_name, []);
     }
-}
 
+    public function get_by_id($id) {
+        return $this->query_unique('SELECT * FROM ' . $this->table_name . ' WHERE blog_id = :id', ['id' => $id]);
+    }
+
+    }
 ?>

@@ -1,33 +1,24 @@
 <?php
-require_once 'BaseDao.php';
 
-public function __construct(){
-    parent::__construct("roles"); 
-}
+require_once __DIR__ . '/BaseDao.php';
 
-public function get_by_id($id){
-    return $this->getById($id);
-}
+class RoleDao extends BaseDao{
 
-public function get_all(){
-    return $this->getAll();
-}
+    protected $table_name;
 
+    public function __construct()
+    {
+        $this->table_name = "roles";
+        parent::__construct($this->table_name);
+    }
 
-public function get_by_id($id){
-    $stmt = $this->connection->prepare("SELECT * FROM roles WHERE id = :id");
-    $stmt->bindParam(':id', $id);
-    $stmt->execute();
-    return $stmt->fetchAll();
-}
+    public function get_all() {
+        return $this->query('SELECT * FROM ' . $this->table_name, []);
+    }
 
-public function add($roles){
-    $this->insert($roles);
-    return $roles;
-}
+    public function get_by_id($id) {
+        return $this->query_unique('SELECT * FROM ' . $this->table_name . ' WHERE role_id = :id', ['id' => $id]);
+    }
 
-public function partial_update($id, $roles){
-    return $this->update($id, $roles);
-}
-
+    }
 ?>

@@ -8,11 +8,11 @@ class Config
 {
     public static function DB_NAME()
     {
-        return 'devdrift2'; 
+        return 'devdrift'; 
     }
     public static function DB_PORT()
     {
-        return  3307;
+        return  3306;
     }
     public static function DB_USER()
     {

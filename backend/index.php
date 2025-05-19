@@ -21,22 +21,6 @@ Flight::register('job_service', "JobService");
 Flight::register('user_service', "UserService");
 Flight::register('auth_service', "AuthService");
 
-Flight::route('/*', function() {
-    if(
-        strpos(Flight::request()->url, '/auth/login') === 0 ||
-        strpos(Flight::request()->url, '/auth/register') === 0
-    ) {
-        return TRUE;
-    } else {
-        try {
-            $token = Flight::request()->getHeader("Authentication");
-            if(Flight::auth_middleware()->verifyToken($token))
-                return TRUE;
-        } catch (\Exception $e) {
-            Flight::halt(401, $e->getMessage());
-        }
-    }
-});
 
 require_once 'rest/routes/ApplicaitonRoutes.php';
 require_once 'rest/routes/BlogRoutes.php';

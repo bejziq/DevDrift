@@ -5,6 +5,9 @@ use Firebase\JWT\Key;
 
 require_once __DIR__ .'/../services/AuthService.php';
 
+Flight::set('auth_service', new AuthService());
+
+
 Flight::group('/auth', function() {
 
 /**
@@ -29,8 +32,9 @@ Flight::group('/auth', function() {
 Flight::route("POST /login", function() {
      $data = Flight::request()->data->getData();
 
-        $response = Flight::auth_service()->login($data);
+     $response = Flight::auth_service()->login($data);
     
+
         if ($response['success']) {
             Flight::json([
                 'message' => 'User logged in successfully',

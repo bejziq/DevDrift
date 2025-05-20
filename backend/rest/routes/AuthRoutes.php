@@ -5,9 +5,6 @@ use Firebase\JWT\Key;
 
 require_once __DIR__ .'/../services/AuthService.php';
 
-Flight::set('auth_service', new AuthService());
-
-
 Flight::group('/auth', function() {
 
 /**
@@ -27,7 +24,7 @@ Flight::group('/auth', function() {
      *              @OA\Property(property="password", type="string", example="some_password", description="User password")
      *          )
      *      )
-     * )
+     * ) 
      */
 Flight::route("POST /login", function() {
      $data = Flight::request()->data->getData();
@@ -52,6 +49,9 @@ Flight::route("POST /login", function() {
      *     summary="Register new user.",
      *     description="Add a new user to the database.",
      *     tags={"auth"},
+     *     security={
+     *         {"ApiKey": {}}
+     *     },
      *     @OA\RequestBody(
      *         description="Add new user",
      *         required=true,

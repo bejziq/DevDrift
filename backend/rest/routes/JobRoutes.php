@@ -11,6 +11,8 @@
  * )
  */
 Flight::route("GET /jobs", function() {
+    Flight::auth_middleware()->authorizeRoles([Roles::USER, Roles::ADMIN]);
+    $user = Flight::get('user');
     Flight::json(Flight::job_service()->get_all());
 }); 
 /**

@@ -20,7 +20,13 @@ use Firebase\JWT\Key;
  * )
  */
 Flight::route("GET /users", function() {
-    Flight::json(Flight::user_service()->get_all());
+    Flight::auth_middleware()->authorizeRoles([Roles::USER, Roles::ADMIN]);
+    $user = Flight::get('user');
+    if ($user->roles === Roles::USER) {
+        Flight::json(Flight::user_service()->get_all());
+    } else {
+        Flight::json(['error' => 'Forbidden'], 403);
+    }
 }); 
 /**
  * @OA\Get(

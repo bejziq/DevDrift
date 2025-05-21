@@ -21,11 +21,13 @@ Flight::register('contact_service', "ContactService");
 Flight::register('job_service', "JobService");
 Flight::register('user_service', "UserService");
 Flight::register('auth_service', "AuthService");
+Flight::register('auth_middleware', "AuthMiddleware");
 
 Flight::route('/*', function() {
     if(
         strpos(Flight::request()->url, '/auth/login') === 0 ||
-        strpos(Flight::request()->url, '/auth/register') === 0
+        strpos(Flight::request()->url, '/auth/register') === 0 ||
+        strpos(Flight::request()->url, '/company') === 0 
     ) {
         return TRUE;
     } else {

@@ -1,0 +1,221 @@
+<section id="admin">
+  <div class="container-fluid py-4">
+    <div class="row mb-4">
+      <div class="col-12 d-flex justify-content-between align-items-center">
+        <h2 class="mb-0">Admin Dashboard</h2>
+        <div>
+          <button class="btn btn-primary me-2" data-bs-toggle="modal" data-bs-target="#addUserModal">Add User</button>
+          <button class="btn btn-primary me-2" data-bs-toggle="modal" data-bs-target="#addBlogModal">Add Blog</button>
+          <button class="btn btn-primary me-2" data-bs-toggle="modal" data-bs-target="#addApplicationModal">Add Application</button>
+          <button class="btn btn-primary me-2" data-bs-toggle="modal" data-bs-target="#addCompanyModal">Add Company</button>
+          <button class="btn btn-primary me-2" data-bs-toggle="modal" data-bs-target="#addJobModal">Add Job</button>
+          <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addCategoryModal">Add Category</button>
+        </div>
+      </div>
+    </div>
+
+    <ul class="nav nav-tabs mb-4" id="adminTab" role="tablist">
+      <li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#users" type="button">Users</button></li>
+      <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#blogs" type="button">Blogs</button></li>
+      <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#applications" type="button">Applications</button></li>
+      <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#companies" type="button">Companies</button></li>
+      <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#jobs" type="button">Jobs</button></li>
+      <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#categories" type="button">Categories</button></li>
+      <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#contacts" type="button">Contacts</button></li>
+    </ul>
+
+    <div class="tab-content" id="adminTabContent">
+      <!-- Users Tab -->
+      <div class="tab-pane fade show active" id="users">
+        <div class="table-responsive">
+          <table class="table table-striped align-middle">
+            <thead class="table-dark">
+              <tr>
+                <th>User ID</th><th>Name</th><th>Surname</th><th>Email</th><th>Role</th><th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="admin-users-table"></tbody>
+          </table>
+        </div>
+      </div>
+      <!-- Blogs Tab -->
+      <div class="tab-pane fade" id="blogs">
+        <div class="table-responsive">
+          <table class="table table-striped align-middle">
+            <thead class="table-dark">
+              <tr>
+                <th>Blog ID</th><th>Title</th><th>Author</th><th>Date</th><th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="admin-blogs-table"></tbody>
+          </table>
+        </div>
+      </div>
+      <!-- Applications Tab -->
+      <div class="tab-pane fade" id="applications">
+        <div class="table-responsive">
+          <table class="table table-striped align-middle">
+            <thead class="table-dark">
+              <tr>
+                <th>Application ID</th><th>User</th><th>Job</th><th>Status</th><th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="admin-applications-table"></tbody>
+          </table>
+        </div>
+      </div>
+      <!-- Companies Tab -->
+      <div class="tab-pane fade" id="companies">
+        <div class="table-responsive">
+          <table class="table table-striped align-middle">
+            <thead class="table-dark">
+              <tr>
+                <th>Company ID</th><th>Name</th><th>Location</th><th>Industry</th><th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="admin-companies-table"></tbody>
+          </table>
+        </div>
+      </div>
+      <!-- Jobs Tab -->
+      <div class="tab-pane fade" id="jobs">
+        <div class="table-responsive">
+          <table class="table table-striped align-middle">
+            <thead class="table-dark">
+              <tr>
+                <th>Job ID</th><th>Title</th><th>Company</th><th>Category</th><th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="admin-jobs-table"></tbody>
+          </table>
+        </div>
+      </div>
+      <!-- Categories Tab -->
+      <div class="tab-pane fade" id="categories">
+        <div class="table-responsive">
+          <table class="table table-striped align-middle">
+            <thead class="table-dark">
+              <tr>
+                <th>Category ID</th><th>Name</th><th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="admin-categories-table"></tbody>
+          </table>
+        </div>
+      </div>
+      <!-- Contacts Tab -->
+      <div class="tab-pane fade" id="contacts">
+        <div class="table-responsive">
+          <table class="table table-striped align-middle">
+            <thead class="table-dark">
+              <tr>
+                <th>Contact ID</th><th>Name</th><th>Email</th><th>Message</th><th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="admin-contacts-table"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modals for CRUD operations (repeat for each entity) -->
+
+  <!-- User Modals -->
+  <div class="modal fade" id="addUserModal" tabindex="-1"><div class="modal-dialog"><form class="modal-content" id="addUserForm">
+    <div class="modal-header"><h5 class="modal-title">Add User</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+    <div class="modal-body">
+      <input type="text" class="form-control mb-2" name="name" placeholder="Name" required>
+      <input type="text" class="form-control mb-2" name="surname" placeholder="Surname" required>
+      <input type="email" class="form-control mb-2" name="email" placeholder="Email" required>
+      <input type="password" class="form-control mb-2" name="password" placeholder="Password" required>
+      <select class="form-select mb-2" name="roles" required>
+        <option value="user">User</option>
+        <option value="admin">Admin</option>
+      </select>
+    </div>
+    <div class="modal-footer"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+      <button type="submit" class="btn btn-primary">Add</button></div>
+  </form></div></div>
+  <!-- Repeat similar modals for Edit and Delete User -->
+
+  <!-- Blog Modals -->
+  <div class="modal fade" id="addBlogModal" tabindex="-1"><div class="modal-dialog"><form class="modal-content" id="addBlogForm">
+    <div class="modal-header"><h5 class="modal-title">Add Blog</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+    <div class="modal-body">
+      <input type="text" class="form-control mb-2" name="title" placeholder="Title" required>
+      <input type="text" class="form-control mb-2" name="author" placeholder="Author" required>
+      <textarea class="form-control mb-2" name="content" placeholder="Content" required></textarea>
+    </div>
+    <div class="modal-footer"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+      <button type="submit" class="btn btn-primary">Add</button></div>
+  </form></div></div>
+  <!-- Repeat similar modals for Edit and Delete Blog -->
+
+  <!-- Application Modals -->
+  <div class="modal fade" id="addApplicationModal" tabindex="-1"><div class="modal-dialog"><form class="modal-content" id="addApplicationForm">
+    <div class="modal-header"><h5 class="modal-title">Add Application</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+    <div class="modal-body">
+      <input type="number" class="form-control mb-2" name="user_id" placeholder="User ID" required>
+      <input type="number" class="form-control mb-2" name="job_id" placeholder="Job ID" required>
+      <select class="form-select mb-2" name="status" required>
+        <option value="pending">Pending</option>
+        <option value="accepted">Accepted</option>
+        <option value="rejected">Rejected</option>
+      </select>
+    </div>
+    <div class="modal-footer"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+      <button type="submit" class="btn btn-primary">Add</button></div>
+  </form></div></div>
+  <!-- Repeat similar modals for Edit and Delete Application -->
+
+  <!-- Company Modals -->
+  <div class="modal fade" id="addCompanyModal" tabindex="-1"><div class="modal-dialog"><form class="modal-content" id="addCompanyForm">
+    <div class="modal-header"><h5 class="modal-title">Add Company</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+    <div class="modal-body">
+      <input type="text" class="form-control mb-2" name="name" placeholder="Name" required>
+      <input type="text" class="form-control mb-2" name="location" placeholder="Location" required>
+      <input type="text" class="form-control mb-2" name="industry" placeholder="Industry" required>
+    </div>
+    <div class="modal-footer"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+      <button type="submit" class="btn btn-primary">Add</button></div>
+  </form></div></div>
+  <!-- Repeat similar modals for Edit and Delete Company -->
+
+  <!-- Job Modals -->
+  <div class="modal fade" id="addJobModal" tabindex="-1"><div class="modal-dialog"><form class="modal-content" id="addJobForm">
+    <div class="modal-header"><h5 class="modal-title">Add Job</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+    <div class="modal-body">
+      <input type="text" class="form-control mb-2" name="title" placeholder="Title" required>
+      <input type="number" class="form-control mb-2" name="company_id" placeholder="Company ID" required>
+      <input type="number" class="form-control mb-2" name="category_id" placeholder="Category ID" required>
+    </div>
+    <div class="modal-footer"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+      <button type="submit" class="btn btn-primary">Add</button></div>
+  </form></div></div>
+  <!-- Repeat similar modals for Edit and Delete Job -->
+
+  <!-- Category Modals -->
+  <div class="modal fade" id="addCategoryModal" tabindex="-1"><div class="modal-dialog"><form class="modal-content" id="addCategoryForm">
+    <div class="modal-header"><h5 class="modal-title">Add Category</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+    <div class="modal-body">
+      <input type="text" class="form-control mb-2" name="name" placeholder="Category Name" required>
+    </div>
+    <div class="modal-footer"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+      <button type="submit" class="btn btn-primary">Add</button></div>
+  </form></div></div>
+  <!-- Repeat similar modals for Edit and Delete Category -->
+
+  <!-- Contact Modals -->
+  <div class="modal fade" id="addContactModal" tabindex="-1"><div class="modal-dialog"><form class="modal-content" id="addContactForm">
+    <div class="modal-header"><h5 class="modal-title">Add Contact</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+    <div class="modal-body">
+      <input type="text" class="form-control mb-2" name="name" placeholder="Name" required>
+      <input type="email" class="form-control mb-2" name="email" placeholder="Email" required>
+      <textarea class="form-control mb-2" name="message" placeholder="Message" required></textarea>
+    </div>
+    <div class="modal-footer"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+      <button type="submit" class="btn btn-primary">Add</button></div>
+  </form></div></div>
+  <!-- Repeat similar modals for Edit and Delete Contact -->
+</section>

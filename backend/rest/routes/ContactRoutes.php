@@ -11,7 +11,13 @@
  * )
  */
 Flight::route("GET /contacts", function() {
-    Flight::json(Flight::contact_service()->get_all());
+    Flight::auth_middleware()->authorizeRoles([Roles::ADMIN]);
+    $user = Flight::get('user');
+    if ($user->role === Roles::ADMIN) {
+        Flight::json(Flight::contact_service()->get_all());
+    } else {
+        Flight::json(['error' => 'Forbidden'], 403);
+    }
 }); 
 /**
  * @OA\Get(

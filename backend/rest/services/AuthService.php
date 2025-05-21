@@ -12,6 +12,7 @@ class AuthService extends BaseService {
         parent::__construct(new AuthDao);
     }
 
+
     public function get_user_by_email($email){
         return $this->auth_dao->get_user_by_email($email);
     }
@@ -27,7 +28,7 @@ class AuthService extends BaseService {
         }
 
         $entity['password'] = password_hash($entity['password'], PASSWORD_BCRYPT);
-        $entity['role'] = Roles::USER; 
+        $entity['roles'] = Roles::USER; 
         $entity = parent::add($entity);
 
         unset($entity['password']);
@@ -51,7 +52,7 @@ class AuthService extends BaseService {
             'user' => $user,
             'iat' => time(),
             'exp' => time() + (60 * 60 * 24), 
-            'role' => $user['role']
+            'role' => $user['roles']
         ];
 
         $token = JWT::encode(

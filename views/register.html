@@ -1,7 +1,7 @@
 <main class="main">
 
     <!-- Section: Design Block -->
-    <section class="Login">
+    <section class="Register">
       <!-- Jumbotron -->
       <div class="px-4 py-5 px-md-5 text-center text-lg-start" style="background-color: hsl(0, 0%, 96%)">
         <div class="container">
@@ -9,7 +9,7 @@
             <div class="col-lg-6 mb-5 mb-lg-0">
               <h1 class="my-5 display-3 fw-bold ls-tight">
                 For full experience <br />
-                <span style="color: #71c55d;">Login</span>
+                <span style="color: #71c55d;">Sign In</span>
               </h1>
               <p style="color: hsl(217, 10%, 50.8%)">
                 Log in to your DevDrift account and unlock a world of opportunities! Whether you're here to explore job openings, learn new technologies, or stay updated with the latest IT news, our platform is designed to help you grow and succeed in your tech journey. Sign in to access personalized resources, track your progress, and connect with a vibrant community of developers and professionals.
@@ -17,9 +17,9 @@
             </div>
     
             <div class="col-lg-6 mb-5 mb-lg-0">
-              <div class="card">
+              <div class="card">  
                 <div class="card-body py-5 px-md-5">
-                  <form>
+                  <form id="Login-form">
                     <!-- 2 column grid layout with text inputs for the first and last names -->
                     <div class="row">
                       <div class="col-md-6 mb-4">
@@ -34,7 +34,7 @@
                           <label class="form-label" for="form3Example2">Last name</label>
                         </div>
                       </div>
-                    </div>
+                    </div>  
     
                     <!-- Email input -->
                     <div data-mdb-input-init class="form-outline mb-4">
@@ -48,37 +48,17 @@
                       <label class="form-label" for="form3Example4">Password</label>
                     </div>
     
-                    <!-- Checkbox -->
-                    <div class="form-check d-flex justify-content-center mb-4">
-                      <input class="form-check-input me-2" type="checkbox" value="" id="form2Example33" unchecked />
-                      <label class="form-check-label" for="form2Example33">
-                        Subscribe to our newsletter
-                      </label>
-                    </div>
-    
                     <!-- Submit button -->
                     <button style="background-color:#71c55d; border-color:white;" type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4">
-                      Sign up
+                      Sign in
                     </button>
-    
-                    <!-- Register buttons -->
+
                     <div class="text-center">
-                      <p>or sign up with:</p>
-                      <button  style="color: #71c55d;" type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-link btn-floating mx-1">
-                        <i class="bi bi-facebook"></i>
-                      </button>
+                      <p>Already have an account?
+                        <a href="login.html" style="color:#71c55d;">Login here</a>
+                      </p>
+                    </div>
     
-                      <button style="color:#71c55d;" type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-link btn-floating mx-1">
-                        <i class="bi bi-linkedin"></i>
-                      </button>
-    
-                      <button style="color: #71c55d;" type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-link btn-floating mx-1">
-                        <i class="bi bi-github"></i>
-                      </button>
-    
-                      <button style="color: #71c55d;" type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-link btn-floating mx-1">
-                        <i class="bi bi-google"></i>
-                      </button>
                     </div>
                   </form>
                 </div>

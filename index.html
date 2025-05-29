@@ -34,7 +34,7 @@
 
 </head>
 
-<body class="index-page">
+<body>
 
   <header id="header" class="header d-flex align-items-center sticky-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
@@ -43,77 +43,22 @@
         <h1 class="sitename"><span>D</span>evDrift</h1>
       </a>
 
-      <nav id="navmenu" class="navmenu" role="navigation">
-        <ul>
-          <li><a href="#hero">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#features">Features</a></li>
-          <li class="dropdown"><a href="#hero">Content<i class="bi bi-chevron-down toggle-dropdown"></i></a>
-            <ul>
-              <li><a href="#starter-page">News</a></li>
-              <li class="dropdown"><a href="#learn"><span>Learn</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-                <ul>
-                  <li><a href="https://www.w3schools.com/python/">Python</a></li>
-                  <li><a href="https://www.w3schools.com/js/">JavaScript</a></li>
-                  <li><a href="https://www.w3schools.com/cpp/">C++</a></li>
-                  <li><a href="https://www.w3schools.com/java/">Java</a></li>
-                  <li><a href="https://www.w3schools.com/MySQL/default.asp">MySQL</a></li>
-                </ul>
-              </li>
-              <li><a href="#career">Career</a></li>
-              <li><a href="#oglasi">Jobs</a></li>
-              <li><a href="#companies">Companies</a></li>
-            </ul>
-          </li>
-          <li><a href="#contact">Contact</a></li>
-          <li><a href="#login" class = "active">Sign In</a></li>
-        </ul>
-        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-      </nav>
+      <nav class="navbar navbar-expand-lg navmenu" id="navmenu">
+            <div class="container">
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav navmenu" id="tabs" style="margin-left:auto; font-family: inherit;"> 
+                    </ul>
+                </div>
+            </div>
+        </nav>
     </div>
   </header>
 
   <main id="spapp" role="main">
-      <section id="hero" data-load="hero.html"></section>
-      <section id="about" data-load="about.html"></section>
-      <section id="features" data-load="features.html"></section>
-      <section id="starter-page" data-load="starter-page.html"></section>
-      <section id="learn" data-load="learn.html"></section>
-      <section id="career" data-load="career.html"></section>
-      <section id="contact" data-load="contact.html"></section>
-      <section id="login" data-load="login.html"></section>
-      <section id="faq" data-load="faq.html"></section>
-      <section id="oglasi" data-load="oglasi.html"></section>
-      <section id="blog-detail" data-load="blog-detail.html"></section>
-      <section id="blog-detail2" data-load="blog-detail2.html"></section>
-      <section id="blog-detail3" data-load="blog-detail3.html"></section>
-      <section id="01" data-load="01.html"></section>
-      <section id="klika" data-load="klika.html"></section>
-      <section id="02" data-load="02.html"></section>
-      <section id="more_screens" data-load="more_screens.html"></section>
-      <section id="companies" data-load="companies.html"></section>
-
 
   </main> 
 
-  <footer id="footer" class="footer light-background">
-
-    <div class="container">
-      <div class="copyright text-center ">
-        <p>© <span>Copyright</span> <strong class="px-1 sitename">DevDrift</strong> <span>All Rights Reserved</span></p>
-      </div>
-      <div class="social-links d-flex justify-content-center">
-        <a href=""><i class="bi bi-twitter-x"></i></a>
-        <a href=""><i class="bi bi-facebook"></i></a>
-        <a href=""><i class="bi bi-instagram"></i></a>
-        <a href=""><i class="bi bi-linkedin"></i></a>
-      </div>
-      <div class="credits">
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-      </div>
-    </div>
-
-  </footer>
+  
 
   <!-- Scroll Top -->
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
@@ -122,26 +67,53 @@
 
   <!-- Vendor JS Files -->
   <script src="frontend/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="frontend/assets/vendor/php-email-form/validate.js"></script>
   <script src="frontend/assets/vendor/aos/aos.js"></script>
   <script src="frontend/assets/vendor/glightbox/js/glightbox.min.js"></script>
-
+  <script src="frontend/assets/js/block-ui.js"></script>
+  <script src="frontend/assets/js/toastr.min.js"></script>
+  <script src="frontend/assets/js/jquery.validate.min.js"></script>
+  <script src="frontend/utils/constants.js"></script>
+  <script src="frontend/utils/utils.js"></script>
+  <script src="frontend/utils/rest-client.js"></script>
+  <script src="frontend/services/user-service.js"></script>
+  
   <!-- Main JS File -->
-  <script src="frontend/assets/js/main.js"></script>
+  <script src="frontend/assets/js/main.js"></script>   
 
   
+
   <script>
-    var app =$.spapp({
-            defaultView:"#hero",
-            templateDir:"./views/"
-    })
+    UserService.generateMenuItems();  
+    
+    $(document).ready(function() {
+  var app = $.spapp({
+    defaultView: "#hero",
+    templateDir: "./views/"
+  });
 
-    app.route({
-            view: "hero"
-        });
+  app.route({ view: "hero" });
+  app.route({ view: "about" });
+  app.route({ view: "features" });
+  app.route({ view: "starter-page" });
+  app.route({ view: "learn" });
+  app.route({ view: "career" });
+  app.route({ view: "contact" });
+  app.route({ view: "register" });
+  app.route({ view: "faq" });
+  app.route({ view: "oglasi" });
+  app.route({ view: "blog-detail" });
+  app.route({ view: "blog-detail2" });
+  app.route({ view: "blog-detail3" });
+  app.route({ view: "01" });
+  app.route({ view: "klika" });
+  app.route({ view: "02" });
+  app.route({ view: "more_screens" });
+  app.route({ view: "companies" });
+  app.route({ view: "login" });
+  app.route({ view: "admin-log-details" });
 
-
-    app.run();
+  app.run();
+});
   </script>
 
 </body>

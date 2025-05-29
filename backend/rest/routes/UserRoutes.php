@@ -1,17 +1,32 @@
 <?php
+require_once __DIR__ . '/../services/UserService.php';
+
+use Firebase\JWT\JWT;
+use Firebase\JWT\Key;
+
+
 /**
  * @OA\Get(
  *     path="/users",
  *     tags={"users"},
- *     summary="Get all users",
+ *     summary="Return all users from the API.",
+ *     security={
+ *         {"ApiKey": {}}
+ *     },
  *     @OA\Response(
  *         response=200,
- *         description="Array of all users"
+ *         description="List of users."
  *     )
  * )
  */
 Flight::route("GET /users", function() {
-    Flight::json(Flight::user_service()->get_all());
+    Flight::auth_middleware()->authorizeRoles([Roles::USER, Roles::ADMIN]);
+    $user = Flight::get('user');
+    if ($user->roles === Roles::USER) {
+        Flight::json(Flight::user_service()->get_all());
+    } else {
+        Flight::json(['error' => 'Forbidden'], 403);
+    }
 }); 
 /**
  * @OA\Get(
@@ -58,25 +73,27 @@ Flight::route("DELETE /users/@id", function($id) {
     Flight::json(['message' => "user has been added successfully"]);
 });
 /**
- * @OA\Post(
- *     path="/users",
- *     tags={"users"},
- *     summary="Add a new user",
- *     @OA\RequestBody(
- *         required=true,
- *         @OA\JsonContent(
- *             required={"name", "email", "password"},
- *             @OA\Property(property="name", type="string", example="John Doe"),
- *             @OA\Property(property="email", type="string", example="john@example.com"),
- *             @OA\Property(property="password", type="string", example="secret123")
- *         )
- *     ),
- *     @OA\Response(
- *         response=200,
- *         description="User added successfully"
- *     )
- * )
- */
+     * @OA\Post(
+     *      path="/users/add",
+     *      tags={"users"},
+     *      summary="Add user data to the database",
+     *      @OA\Response(
+     *           response=200,
+     *           description="User data, or exception if patient is not added properly"
+     *      ),
+     *      @OA\RequestBody(
+     *          description="User data payload",
+     *          @OA\JsonContent(
+     *              required={"first_name","last_name","email"},
+     *              @OA\Property(property="user_id", type="string", example="1", description="User ID"),
+     *              @OA\Property(property="name", type="string", example="Some name", description="User first name"),
+     *              @OA\Property(property="surname", type="string", example="Some surname", description="User last name"),
+     *              @OA\Property(property="email", type="string", example="example@example.com", description="Patient email address"),
+     *              @OA\Property(property="password", type="string", example="some_secret_password", description="Patient password")
+     *          )
+     *      )
+     * )
+     */
 Flight::route("POST /users", function() {
     $request = Flight::request()->data->getData();
     Flight::json([
@@ -87,8 +104,12 @@ Flight::route("POST /users", function() {
 /**
  * @OA\Patch(
  *     path="/users/{id}",
+ *     summary="Edit user details",
+ *     description="Update user information using their ID.",
  *     tags={"users"},
- *     summary="Update a user by ID",
+ *     security={
+ *         {"ApiKey": {}}
+ *     },
  *     @OA\Parameter(
  *         name="id",
  *         in="path",
@@ -97,15 +118,29 @@ Flight::route("POST /users", function() {
  *         @OA\Schema(type="integer", example=1)
  *     ),
  *     @OA\RequestBody(
+ *         description="Updated user information",
  *         required=true,
  *         @OA\JsonContent(
- *             @OA\Property(property="name", type="string", example="John Smith"),
- *             @OA\Property(property="email", type="string", example="johnsmith@example.com")
+ *             @OA\Property(
+ *              property="name", 
+ *              type="string", 
+ *              example="Demo", 
+ *              description="Username"
+ *             ),
+ *             @OA\Property(property="email", type="string", example="demo@gmail.com", description="user email")
  *         )
  *     ),
  *     @OA\Response(
  *         response=200,
- *         description="User updated successfully"
+ *         description="User has been edited successfully."
+ *     ),
+ *     @OA\Response(
+ *         response=400,
+ *         description="Invalid input data."
+ *     ),
+ *     @OA\Response(
+ *         response=500,
+ *         description="Internal server error."
  *     )
  * )
  */

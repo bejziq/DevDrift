@@ -20,7 +20,7 @@ class CompanyService extends BaseService {
     }
 
     public function addCompany($companyData) {
-        if (empty($companyData['name'])) {
+        if (empty($companyData['company_name'])) {
             throw new Exception("Company name is required.");
         }
 

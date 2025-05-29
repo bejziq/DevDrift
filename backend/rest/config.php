@@ -1,5 +1,5 @@
 <?php
-// Set the reporting
+
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL ^ (E_NOTICE | E_DEPRECATED));
@@ -8,11 +8,11 @@ class Config
 {
     public static function DB_NAME()
     {
-        return 'devdrift2'; //restaurant_db
+        return 'devdrift'; 
     }
     public static function DB_PORT()
     {
-        return  3307;
+        return  3306;
     }
     public static function DB_USER()
     {
@@ -28,7 +28,7 @@ class Config
     }
 
     public static function JWT_SECRET() {
-        return 'your_key_string';
+        return '?Zy8Y67mE(7;M(3x%di!:*xURn8d30';
     }
 
 }

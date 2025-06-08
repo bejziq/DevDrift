@@ -9,8 +9,8 @@ function loadUsers() {
         title: "Actions",
         render: function (data, type, row) {
           return `
-            <button class="edit-btn" data-id="${row.id}" data-name="${row.name}" data-surname="${row.surname}" data-email="${row.email}">Edit</button>
-            <button class="delete-btn" data-id="${row.id}">Delete</button>
+            <button class="edit-btn" data-id="${row.id || row.user_id}" data-name="${row.name}" data-surname="${row.surname}" data-email="${row.email}">Edit</button>
+            <button class="delete-btn" data-id="${row.id || row.user_id}">Delete</button>
           `;
         },
       },
@@ -86,8 +86,9 @@ function loadUsers() {
 
 $(document).ready(function () {
   const token = localStorage.getItem("user_token");
-  const user = Utils.parseJwt(token);
-  if (user && user.roles === Constants.ADMIN_ROLE) {
+  const decoded = Utils.parseJwt(token);
+
+  if (decoded && decoded.user && decoded.user.roles === Constants.ADMIN_ROLE) {
     loadUsers();
   } else {
     $("#admin-section").html("<p>Access denied. Admins only.</p>");

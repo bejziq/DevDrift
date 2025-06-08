@@ -1,59 +1,151 @@
-body {
-  font-family: Arial, sans-serif;
-  margin: 20px;
-  background-color: #f9f9f9;
-}
-
-h1 {
-  text-align: center;
-  margin-bottom: 30px;
-}
-
-nav {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-button {
-  padding: 10px 20px;
-  margin: 5px;
-  cursor: pointer;
-  border: none;
-  background-color: #3498db;
-  color: white;
-  border-radius: 5px;
-}
-
-button:hover {
-  background-color: #2980b9;
-}
-
 #admin-section {
-  padding: 20px;
-  background-color: white;
-  border-radius: 8px;
   max-width: 900px;
   margin: 0 auto;
+  background: #fff;
+  padding: 30px 40px;
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  min-height: 400px; /* gives some height before content loads */
 }
 
-table {
+/* Tables inside admin section */
+#admin-section table.display {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 15px;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 5px rgb(0 0 0 / 0.1);
+  border-radius: 6px;
+  overflow: hidden;
 }
 
-th, td {
-  border: 1px solid #ddd;
-  padding: 10px;
+#admin-section table.display th,
+#admin-section table.display td {
+  padding: 12px 15px;
   text-align: left;
 }
 
-input, textarea {
-  width: 100%;
-  padding: 8px;
-  margin: 5px 0;
+#admin-section table.display thead {
+  background-color: #007bff;
+  color: white;
 }
 
-form {
-  margin-top: 20px;
+#admin-section table.display tbody tr:nth-child(even) {
+  background-color: #f8f9fa;
+}
+
+/* Forms */
+#admin-section form#add-user-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+#admin-section form#add-user-form input {
+  flex: 1 1 calc(25% - 10px);
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  transition: border-color 0.3s ease;
+}
+
+#admin-section form#add-user-form input:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+#admin-section form#add-user-form button {
+  padding: 11px 20px;
+  font-weight: 600;
+  background-color: #007bff;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#admin-section form#add-user-form button:hover {
+  background-color: #0056b3;
+}
+
+/* Buttons inside tables */
+#admin-section button.edit-btn,
+#admin-section button.delete-btn {
+  background-color: #007bff;
+  border: none;
+  color: white;
+  padding: 6px 12px;
+  font-size: 13px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 5px;
+  transition: background-color 0.3s ease;
+}
+
+#admin-section button.delete-btn {
+  background-color: #dc3545;
+}
+
+#admin-section button.edit-btn:hover {
+  background-color: #0056b3;
+}
+
+#admin-section button.delete-btn:hover {
+  background-color: #b02a37;
+}
+
+/* Edit user modal */
+#edit-user-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 350px;
+  padding: 20px 25px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+}
+
+#edit-user-modal h3 {
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+#edit-user-modal form input {
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 10px 12px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+#edit-user-modal form button {
+  margin-right: 10px;
+  padding: 10px 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  border: none;
+  font-weight: 600;
+  color: white;
+}
+
+#edit-user-modal form button[type="submit"] {
+  background-color: #007bff;
+}
+
+#edit-user-modal form button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+#edit-user-modal form button[type="button"] {
+  background-color: #6c757d;
+}
+
+#edit-user-modal form button[type="button"]:hover {
+  background-color: #5a6268;
 }

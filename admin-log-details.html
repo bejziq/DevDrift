@@ -1,171 +1,24 @@
-<div class="container mt-4">
-  <h2>Admin Content Management</h2>
-  <div class="mb-3">
-    <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addContentModal">Add New Content</button>
-  </div>
-  <table class="table table-bordered" id="contentTable">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Title</th>
-        <th>Type</th>
-        <th>Created</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <!-- Content rows will be loaded here -->
-    </tbody>
-  </table>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="frontend/assets/css/admin-custom.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css" />
+</head>
+<body>
+  <h1>Admin Dashboard</h1>
 
-<!-- Add/Edit Modal -->
-<div class="modal fade" id="addContentModal" tabindex="-1" aria-labelledby="addContentModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <form id="contentForm">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="addContentModalLabel">Add/Edit Content</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <input type="hidden" id="contentId" name="id">
-          <div class="mb-3">
-            <label for="contentTitle" class="form-label">Title</label>
-            <input type="text" class="form-control" id="contentTitle" name="title" required>
-          </div>
-          <div class="mb-3">
-            <label for="contentType" class="form-label">Type</label>
-            <select class="form-control" id="contentType" name="type" required>
-              <option value="news">News</option>
-              <option value="blog">Blog</option>
-              <option value="job">Job</option>
-              <option value="company">Company</option>
-              <option value="other">Other</option>
-            </select>
-          </div>
-          <div class="mb-3">
-            <label for="contentBody" class="form-label">Content</label>
-            <textarea class="form-control" id="contentBody" name="body" rows="4" required></textarea>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="submit" class="btn btn-primary">Save</button>
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-        </div>
-      </div>
-    </form>
-  </div>
-</div>
-
-<script>
-$(document).ready(function() {
-  loadContent();
-
-  // Load all content
-  function loadContent() {
-    $.ajax({
-      url: Constants.PROJECT_BASE_URL + "content",
-      method: "GET",
-      headers: { "Authorization": "Bearer " + localStorage.getItem("user_token") },
-      success: function(data) {
-        let rows = "";
-        data.forEach(function(item) {
-          rows += `
-            <tr>
-              <td>${item.id}</td>
-              <td>${item.title}</td>
-              <td>${item.type}</td>
-              <td>${item.created_at || ''}</td>
-              <td>
-                <button class="btn btn-sm btn-warning edit-btn" data-id="${item.id}">Edit</button>
-                <button class="btn btn-sm btn-danger delete-btn" data-id="${item.id}">Delete</button>
-              </td>
-            </tr>
-          `;
-        });
-        $("#contentTable tbody").html(rows);
-      }
-    });
-  }
-
-  // Open modal for add
-  $('#addContentModal').on('show.bs.modal', function (event) {
-    var button = $(event.relatedTarget);
-    if (button.hasClass('edit-btn')) {
-      var id = button.data('id');
-      $.ajax({
-        url: Constants.PROJECT_BASE_URL + "content/" + id,
-        method: "GET",
-        headers: { "Authorization": "Bearer " + localStorage.getItem("user_token") },
-        success: function(data) {
-          $('#contentId').val(data.id);
-          $('#contentTitle').val(data.title);
-          $('#contentType').val(data.type);
-          $('#contentBody').val(data.body);
-          $('#addContentModalLabel').text('Edit Content');
-        }
-      });
-    } else {
-      $('#contentForm')[0].reset();
-      $('#contentId').val('');
-      $('#addContentModalLabel').text('Add Content');
-    }
-  });
-
-  // Handle add/edit submit
-  $('#contentForm').submit(function(e) {
-    e.preventDefault();
-    var id = $('#contentId').val();
-    var method = id ? "PUT" : "POST";
-    var url = Constants.PROJECT_BASE_URL + "content" + (id ? "/" + id : "");
-    var data = {
-      title: $('#contentTitle').val(),
-      type: $('#contentType').val(),
-      body: $('#contentBody').val()
-    };
-    $.ajax({
-      url: url,
-      method: method,
-      headers: { "Authorization": "Bearer " + localStorage.getItem("user_token") },
-      contentType: "application/json",
-      data: JSON.stringify(data),
-      success: function() {
-        $('#addContentModal').modal('hide');
-        loadContent();
-        toastr.success('Content saved.');
-      },
-      error: function(xhr) {
-        toastr.error(xhr.responseText || 'Error saving content.');
-      }
-    });
-  });
-
-  // Edit button
-  $(document).on('click', '.edit-btn', function() {
-    var id = $(this).data('id');
-    $('#addContentModal').modal('show');
-    // Modal will be populated by show.bs.modal event
-    $('#addContentModal').data('bs.modal')._element.relatedTarget = $(this)[0];
-  });
-
-  // Delete button
-  $(document).on('click', '.delete-btn', function() {
-    if (confirm('Are you sure you want to delete this content?')) {
-      var id = $(this).data('id');
-      $.ajax({
-        url: Constants.PROJECT_BASE_URL + "content/" + id,
-        method: "DELETE",
-        headers: { "Authorization": "Bearer " + localStorage.getItem("user_token") },
-        success: function() {
-          loadContent();
-          toastr.success('Content deleted.');
-        },
-        error: function(xhr) {
-          toastr.error(xhr.responseText || 'Error deleting content.');
-        }
-      });
-    }
-  });
-});
-</script>
+  <section id="admin-section">
+    <!-- Dynamic content appears here -->
+  </section>
+  
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+  <script type="module" src="frontend/services/admin.js"></script>
+  <script src="frontend/utils/utils.js"></script>
+  <script src="frontend/utils/rest-client.js"></script>
+  <script src="frontend/utils/constants.js"></script>
+</body>
+</html>

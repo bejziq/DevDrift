@@ -10,7 +10,46 @@ var UserService = {
         UserService.login(entity);
       },
     });
+    if ($("#register-link").length === 0 && $("#login-form").length) {
+      $("#login-form").append('<a id="register-link" href="register.html" class="btn btn-link">Register</a>');
+    }
   },
+
+   registerInit: function () {
+  $("#register-form").validate({
+    rules: {
+      name: { required: true },
+      surname: { required: true },
+      email: { required: true, email: true },
+      password: { required: true, minlength: 6 }
+    },
+    submitHandler: function (form) {
+      var entity = Object.fromEntries(new FormData(form).entries());
+      UserService.register(entity);
+    }
+  });
+},
+
+register: function (entity) {
+  $.ajax({
+    url: Constants.PROJECT_BASE_URL + "auth/register",
+    type: "POST",
+    data: JSON.stringify(entity),
+    contentType: "application/json",
+    dataType: "json",
+    success: function (result) {
+      toastr.success("Registration successful! Please login.");
+      setTimeout(function () {
+        window.location.replace("login.html");
+      }, 1500);
+    },
+    error: function (XMLHttpRequest, textStatus, errorThrown) {
+      toastr.error(XMLHttpRequest?.responseText ? XMLHttpRequest.responseText : 'Error');
+    }
+  });
+},
+
+
   login: function (entity) {
     $.ajax({
       url: Constants.PROJECT_BASE_URL + "auth/login",

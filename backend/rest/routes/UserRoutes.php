@@ -20,14 +20,9 @@ use Firebase\JWT\Key;
  * )
  */
 Flight::route("GET /users", function() {
-    Flight::auth_middleware()->authorizeRoles([Roles::USER, Roles::ADMIN]);
-    $user = Flight::get('user');
-    if ($user->roles === Roles::USER) {
-        Flight::json(Flight::user_service()->get_all());
-    } else {
-        Flight::json(['error' => 'Forbidden'], 403);
-    }
-}); 
+    Flight::auth_middleware()->authorizeRole(Roles::ADMIN); 
+    Flight::json(Flight::user_service()->get_all());
+});
 /**
  * @OA\Get(
  *     path="/users/{id}",
@@ -69,8 +64,13 @@ Flight::route("GET /users/@id", function($id) {
  * )
  */
 Flight::route("DELETE /users/@id", function($id) {
+    $user = Flight::user_service()->get_by_id($id);
+    if (!$user) {
+        Flight::halt(404, 'User not found');
+    }
+
     Flight::user_service()->delete($id);
-    Flight::json(['message' => "user has been added successfully"]);
+    Flight::json(['message' => "User deleted successfully"]);
 });
 /**
      * @OA\Post(

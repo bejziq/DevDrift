@@ -24,6 +24,8 @@
 
   <!-- Main CSS File -->
   <link href="frontend/assets/css/main.css" rel="stylesheet">
+  <link rel="stylesheet" href="frontend/assets/css/toastr.min.css">
+  <link rel="stylesheet" href="frontend/assets/css/admin-custom.css">
 
   <!-- SPAPP CSS File -->
   <link rel="stylesheet" href="frontend/assets/css/spapp.css">
@@ -76,9 +78,16 @@
   <script src="frontend/utils/utils.js"></script>
   <script src="frontend/utils/rest-client.js"></script>
   <script src="frontend/services/user-service.js"></script>
-  
+  <script type="module" src="frontend/services/admin.js"></script>
   <!-- Main JS File -->
   <script src="frontend/assets/js/main.js"></script>   
+
+  <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+
+
+ 
 
   
 
@@ -110,7 +119,9 @@
   app.route({ view: "more_screens" });
   app.route({ view: "companies" });
   app.route({ view: "login" });
+  app.route({ view: "register"});
   app.route({ view: "admin-log-details" });
+
 
   app.run();
 });
